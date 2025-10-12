@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Quiz Game</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Vue.js CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="style.css">
+<body class="min-h-screen flex items-center justify-center 
+             bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 
+             relative overflow-hidden">
+
+  <!-- Efek dekorasi blur -->
+  <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+  <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+
+  <div id="app" class="relative w-full max-w-xl p-6 bg-white/10 backdrop-blur-md shadow-2xl rounded-2xl border border-white/20">
+    <h1 class="text-3xl font-extrabold text-center text-white mb-6 drop-shadow-lg">🎯 Quiz Game</h1>
+
+    <!-- Pertanyaan -->
+    <div v-if="currentQuestion < questions.length" class="space-y-4">
+      <h2 class="text-lg font-semibold text-white">
+        {{ questions[currentQuestion].question }}
+      </h2>
+      
+      <!-- Pilihan -->
+      <div class="grid gap-3">
+        <button 
+          v-for="(option, index) in questions[currentQuestion].options"
+          :key="index"
+          @click="checkAnswer(option)"
+          class="w-full px-4 py-2 rounded-lg border border-white/20 text-white hover:bg-indigo-600/70 transition"
+          :class="{
+            'bg-green-600/70': answered && option === questions[currentQuestion].answer,
+            'bg-red-600/70': answered && option === selected && option !== questions[currentQuestion].answer
+          }"
+        >
+          {{ option }}
+        </button>
+      </div>
+
+      <!-- Tombol Next -->
+      <button 
+        v-if="answered"
+        @click="nextQuestion"
+        class="mt-4 w-full bg-indigo-700 text-white py-2 rounded-lg hover:bg-indigo-800 transition">
+        Next ➡️
+      </button>
+    </div>
+
+    <!-- Hasil Akhir -->
+    <div v-else class="text-center">
+      <h2 class="text-2xl font-bold text-yellow-300 drop-shadow-lg">🎉 Game Over!</h2>
+      <p class="text-lg text-white mt-2">Skor kamu: {{ score }} / {{ questions.length }}</p>
+      <button 
+        @click="restartGame"
+        class="mt-4 bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition">
+        🔄 Main Lagi
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

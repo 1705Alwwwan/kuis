@@ -1,0 +1,30 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+.quiz-card {
+  width: 420px;
+  border-radius: 15px;
+}
+
+.question {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.score {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.list-group-item.correct {
+  background-color: #198754 !important;
+  color: #fff;
+  border-color: #198754;
+}
+
+.list-group-item.wrong {
+  background-color: #dc3545 !important;
+  color: #fff;
+  border-color: #dc3545;
+}
