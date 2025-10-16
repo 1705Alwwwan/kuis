@@ -35,8 +35,8 @@ createApp({
         },
         {
           question: "Jenjang pendidikan yang tersedia di Yayasan Al Muslim mencakup?",
-          options: ["PAUD hingga SMA", "TK hingga SMK", "SD hingga Universitas", "TK hingga SMA"],
-          answer: "TK hingga SMA"
+          options: ["PAUD hingga SMA", "TK hingga SMK", "SD hingga Universitas", "PG hingga Perguruan Tinggi"],
+          answer: "PG hingga Perguruan Tinggi"
         },
         {
           question: "Selain pendidikan formal, kegiatan apa yang juga dilakukan oleh Yayasan Al Muslim?",
